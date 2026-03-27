@@ -234,7 +234,7 @@ export default function Login() {
               />
             </div>
 
-            {/* Submit button */
+            {/* Submit button */}
             <button
               type="submit"
               disabled={loading}
