@@ -122,19 +122,20 @@ function RevenueChart({ year }: { year: string }) {
     label: "Revenue ($)",
     data,
     backgroundColor:
-      type === "pie"
-        ? MONTHS.map((_, i) => `hsl(${(i * 30) % 360}, 70%, 60%)`)
-        : "rgba(99,102,241,0.75)",
-    borderColor: type === "line" ? "#6366f1" : undefined,
+      type === "line"
+        ? "rgba(99,102,241,0.12)"
+        : type === "bar"
+          ? "rgba(99,102,241,0.75)"
+          : MONTHS.map((_, i) => `hsl(${(i * 30) % 360}, 70%, 60%)`),
+    borderColor:
+      type === "pie" ? "#0f172a" : type === "line" ? "#6366f1" : undefined,
     borderWidth: type === "line" ? 2 : 0,
     borderRadius: type === "bar" ? 6 : undefined,
     fill: type === "line",
-    backgroundColor: type === "line" ? "rgba(99,102,241,0.12)" : type === "bar" ? "rgba(99,102,241,0.75)" : MONTHS.map((_, i) => `hsl(${(i * 30) % 360}, 70%, 60%)`),
     tension: 0.4,
     pointRadius: type === "line" ? 4 : 0,
     pointHoverRadius: type === "line" ? 6 : 0,
     hoverOffset: 8,
-    borderColor: type === "pie" ? "#0f172a" : type === "line" ? "#6366f1" : undefined,
   };
 
   const chartData = { labels: MONTHS, datasets: [dataset] };
