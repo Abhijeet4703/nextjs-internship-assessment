@@ -18,10 +18,6 @@ export default function Navbar() {
           Home
         </Link>
 
-        <Link href="/login" style={{ color: "white" }}>
-          Login
-        </Link>
-
         <Link href="/dashboard" style={{ color: "white" }}>
           Dashboard
         </Link>
