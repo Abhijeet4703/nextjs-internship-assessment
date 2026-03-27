@@ -194,7 +194,7 @@ export default function Login() {
               />
             </div>
 
-            {/* Password field */
+            {/* Password field */}
             <div style={{ marginBottom: "26px" }}>
               <label
                 style={{
