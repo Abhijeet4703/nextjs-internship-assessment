@@ -81,36 +81,54 @@ export default function Dashboard() {
           </p>
         </div>
 
-        {/* Year selector */}
-        <div
-          style={{
-            display: "flex",
-            gap: "6px",
-            background: "#1e293b",
-            padding: "6px",
-            borderRadius: "10px",
-            border: "1px solid rgba(255,255,255,0.06)",
-          }}
-        >
-          {YEARS.map((y) => (
-            <button
-              key={y}
-              onClick={() => setYear(y)}
-              style={{
-                padding: "8px 20px",
-                borderRadius: "7px",
-                border: "none",
-                cursor: "pointer",
-                fontSize: "14px",
-                fontWeight: 600,
-                background: year === y ? "#6366f1" : "transparent",
-                color: year === y ? "white" : "#64748b",
-                transition: "all 0.15s",
-              }}
-            >
-              {y}
-            </button>
-          ))}
+        {/* Year selector + Reset */}
+        <div style={{ display: "flex", alignItems: "center", gap: "10px" }}>
+          <div
+            style={{
+              display: "flex",
+              gap: "6px",
+              background: "#1e293b",
+              padding: "6px",
+              borderRadius: "10px",
+              border: "1px solid rgba(255,255,255,0.06)",
+            }}
+          >
+            {YEARS.map((y) => (
+              <button
+                key={y}
+                onClick={() => setYear(y)}
+                style={{
+                  padding: "8px 20px",
+                  borderRadius: "7px",
+                  border: "none",
+                  cursor: "pointer",
+                  fontSize: "14px",
+                  fontWeight: 600,
+                  background: year === y ? "#6366f1" : "transparent",
+                  color: year === y ? "white" : "#64748b",
+                  transition: "all 0.15s",
+                }}
+              >
+                {y}
+              </button>
+            ))}
+          </div>
+          <button
+            onClick={() => setYear("2024")}
+            style={{
+              padding: "8px 18px",
+              borderRadius: "8px",
+              border: "1px solid rgba(255,255,255,0.1)",
+              cursor: "pointer",
+              fontSize: "13px",
+              fontWeight: 600,
+              background: "rgba(255,255,255,0.05)",
+              color: "#94a3b8",
+              transition: "all 0.15s",
+            }}
+          >
+            Reset
+          </button>
         </div>
       </div>
 

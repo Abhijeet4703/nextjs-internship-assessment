@@ -140,10 +140,12 @@ function RevenueChart({ year }: { year: string }) {
 
   const chartData = { labels: MONTHS, datasets: [dataset] };
 
+  const pieColors = MONTHS.map((_, i) => `hsl(${(i * 30) % 360}, 70%, 60%)`);
+
   const commonOptions = {
     maintainAspectRatio: false,
     plugins: {
-      legend: { display: type === "pie", labels: { color: "#94a3b8", font: { size: 12 }, padding: 14 } },
+      legend: { display: false },
       tooltip: {
         ...darkTooltip,
         callbacks: {
@@ -183,11 +185,47 @@ function RevenueChart({ year }: { year: string }) {
         </>
       }
     >
-      <div style={{ height: "320px" }}>
+      <div style={{ height: "300px" }}>
         {type === "bar" && <Bar data={chartData} options={axisOptions as object} />}
         {type === "line" && <Line data={chartData} options={axisOptions as object} />}
         {type === "pie" && <Pie data={chartData} options={commonOptions as object} />}
       </div>
+      {/* Custom legend below pie chart */}
+      {type === "pie" && (
+        <div
+          style={{
+            display: "grid",
+            gridTemplateColumns: "1fr 1fr",
+            gap: "10px 24px",
+            marginTop: "20px",
+          }}
+        >
+          {MONTHS.map((month, i) => (
+            <span
+              key={month}
+              style={{
+                display: "flex",
+                alignItems: "center",
+                gap: "8px",
+                fontSize: "12px",
+                color: "#94a3b8",
+              }}
+            >
+              <span
+                style={{
+                  width: "16px",
+                  height: "10px",
+                  borderRadius: "2px",
+                  background: pieColors[i],
+                  flexShrink: 0,
+                  display: "inline-block",
+                }}
+              />
+              {month}
+            </span>
+          ))}
+        </div>
+      )}
     </ChartCard>
   );
 }
@@ -220,10 +258,7 @@ function CategoryChart() {
   const commonOptions = {
     maintainAspectRatio: false,
     plugins: {
-      legend: {
-        display: type === "pie",
-        labels: { color: "#94a3b8", font: { size: 12 }, padding: 14 },
-      },
+      legend: { display: false },
       tooltip: {
         ...darkTooltip,
         callbacks: {
